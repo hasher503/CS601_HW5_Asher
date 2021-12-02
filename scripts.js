@@ -4,15 +4,26 @@ CS601
 Assignment 5
 */
 
-async function getDegrees(url) {
-    await fetch(url)
+
+// function to make API request for degrees and convert the response to a JSON object
+async function getDegrees() {
+
+    // could also fetch from "./degrees.json" but I wanted to try using external hosting with netlify
+    await fetch("https://jolly-dijkstra-66642f.netlify.app/degrees.json")
+
         // get data and check for response status. if it's not 200, throw an error
+
+        // convert the response object to JSON object
         .then((response) => response.json())
         .then((data) => {
-            document.write(data.degrees[0].degree1.school)
+            data.degrees.forEach((degree) => {
+                console.log(degree);
+                const newDiv = document.createElement("div");
+                newDiv.innerHTML = degree.school;
+                document.querySelector("#degreesinfo").appendChild(newDiv);
+            })
         });
 }
 
-getDegrees("https://jolly-dijkstra-66642f.netlify.app/degrees.json");
+document.querySelector("button").addEventListener("click", getDegrees);
 
-// getDegrees("./degrees.json");
