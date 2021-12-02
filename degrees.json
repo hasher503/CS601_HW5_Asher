@@ -1,7 +1,7 @@
 {
-    "degrees_data": [
+    "degrees": [
         {
-            "degree": {
+            "degree1": {
                 "school": "Williams College",
                 "major": "English",
                 "type": "BA",
@@ -9,7 +9,7 @@
             }
         },
         {
-            "degree": {
+            "degree2": {
                 "school": "Boston University",
                 "major": "Software Development",
                 "type": "MS",

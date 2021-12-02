@@ -9,8 +9,9 @@ async function getDegrees(url) {
         // get data and check for response status. if it's not 200, throw an error
         .then((response) => response.json())
         .then((data) => {
-            document.write(data)
-        })
+            document.write(data.degrees_data.degree[0])
+        });
 }
 
-getDegrees("./degrees.json");
+// getDegrees("./degrees.json");
+getDegrees("https://jolly-dijkstra-66642f.netlify.app/degrees.json");
