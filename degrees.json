@@ -1,20 +1,16 @@
 {
     "degrees": [
         {
-            "degree1": {
-                "school": "Williams College",
-                "major": "English",
-                "type": "BA",
-                "year": 2012
-            }
+            "school": "Williams College",
+            "major": "English",
+            "type": "BA",
+            "year": 2012
         },
         {
-            "degree2": {
-                "school": "Boston University",
-                "major": "Software Development",
-                "type": "MS",
-                "year": 2023
-            }
+            "school": "Boston University",
+            "major": "Software Development",
+            "type": "MS",
+            "year": 2023
         }
     ]
 }
