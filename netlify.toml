@@ -1,3 +1,5 @@
+# solution to cors problem from here: https://answers.netlify.com/t/access-control-allow-origin-policy/1813
+
 # The following redirect is intended for use with most SPAs that handle
 # routing internally.
 [[redirects]]
