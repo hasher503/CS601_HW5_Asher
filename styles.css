@@ -37,12 +37,13 @@ button {
     margin: 1rem;
     padding: .5rem 1rem;
     font: inherit;
+    border: 1px solid var(--darkgray);
     border-radius: 2rem;
     background-color: var(--palegray);
 }
 
 button:hover {
-    box-shadow: 5px 5px 5px gray;
+    box-shadow: 5px 5px 5px var(--darkgray);
     cursor: pointer;
 }
 
