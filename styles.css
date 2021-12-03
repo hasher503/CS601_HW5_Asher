@@ -3,3 +3,84 @@ Author: Hope Asher
 CS601
 Assignment 5
 */
+
+
+/* color palette */
+:root {
+    --palegray: #e9ecef;
+    --darkgray: #6c757d;
+}
+
+@font-face {
+    font-family: Varela;
+    src: url("VarelaRound.otf");
+}
+
+body {
+    font-family: Varela, sans-serif;
+}
+
+main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+h1 {
+    width: 100%;
+    text-align: center;
+    font-size: 5rem;
+    margin: 1rem auto;
+}
+
+button {
+    margin: 1rem;
+    padding: .5rem 1rem;
+    font: inherit;
+    border-radius: 2rem;
+    background-color: var(--palegray);
+}
+
+button:hover {
+    box-shadow: 5px 5px 5px gray;
+    cursor: pointer;
+}
+
+/* centers the table on the page */
+table {
+    margin: 3rem auto;
+    text-align: left;
+    border: 1px solid var(--darkgray);
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 1rem;
+    border-bottom: 1px solid black;
+}
+
+th {
+    text-transform: uppercase;
+}
+
+tr:hover {
+    background-color: var(--palegray);
+}
+
+#tableContainer {
+    width: 100%;
+    /* centers the error message on the page */
+    text-align: center;
+}
+
+.degreeDiv {
+    margin: 1rem;
+}
+
+/* reduce padding so table fits on narrow screen */
+@media screen and (max-width: 500px) {
+    th, td {
+        padding: 1rem .2rem;
+
+    }
+}
