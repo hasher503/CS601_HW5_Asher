@@ -7,17 +7,43 @@ Assignment 5
 // the div that holds the degree table (or the error message)
 const tableContainer = document.querySelector("#tableContainer");
 
-// function to make API request for degrees and convert the response to a JSON object
+
+// fetch degrees info from API when degrees button is clicked
+const degreesButton = document.querySelector("#degreesButton");
+degreesButton.addEventListener("click", () => {
+
+    // get the degrees data from API and write it to a table
+    getDegrees();
+
+    // disable the getDegrees button to prevent repeated API calls while degree info is on screen
+    degreesButton.disabled = true;
+
+    // enable clearDegrees button
+    clearButton.disabled = false;
+});
+
+// clear degrees info when clear button is clicked
+const clearButton = document.querySelector("#clearButton");
+clearButton.addEventListener("click", () => {
+    tableContainer.innerHTML = "";
+
+    // disable "clear degrees" button and re-enable "get degrees" button
+    clearButton.disabled = true;
+    degreesButton.disabled = false;
+})
+
+// makes API request for degrees and converts the response to a JSON object
 async function getDegrees() {
 
-    // the whole fetch is wrapped in a try in case any other errors are thrown besides mine
+    // the whole promise chain is wrapped in a try in case any other errors are thrown
     try {
 
-        // could also fetch from "./degrees.json" but wanted to try using external hosting with netlify
+        // can also fetch from "./degrees.json" and it works, but wanted to try accessing through external host with netlify
+        // (e.g. practicing my site working both with both local host and external host)
         await fetch("https://jolly-dijkstra-66642f.netlify.app/degrees.json")
 
             // get data and check for response status. if it's not 200, throw an error
-            .then((response) => {
+            .then(response => {
 
                 // throw a new error if the response code is not ok
                 if (response.status != 200) {
@@ -26,55 +52,45 @@ async function getDegrees() {
                 // parse the response to JSON object
                 return response.json();
             })
-            .then((data) => {
-                // clear out the degrees div to prevent duplicates if degrees were previously fetched
-                tableContainer.innerHTML = "";
+            .then(data => {
 
-                // create the table and add it to the DOM
-                let table = document.createElement("table");
-
-                // create the table header
-                table.innerHTML = "<thead><tr><th>School</th><th>Major</th><th>Type</th><th>Year</th></thead><tbody></tbody>"
-                tableContainer.appendChild(table);
-
-
-                // help from here https://zetcode.com/javascript/jsonforeach/ and MDN docs with the loop below
-
-                // loop through each degree in the data object (e.g. Boston University)
-                data.degrees.forEach(degree => {
-                    // create a new table row for the degree
-                    let newRow = table.insertRow();
-
-                    // loop through each key-value pair in the degree object
-                    Object.entries(degree).forEach(([key, value]) => {
-
-                        // create a new table cell for the degree value (e.g. school, major, type, or year)
-                        let newCell = newRow.insertCell();
-                        newCell.innerHTML = value;
-                    })
-
-                })
-
-                // for (const degree in data.degrees) {
-                //     for (const [key, value] of Object.entries(degree)) {
-                //         console.log(`${key} ${value}`);
-                //     }
-                // }
-
-            })
+                // call function below to write the degrees data to the DOM as a table
+                buildTable(data);
+            });
     }
     // catch the error thrown above for invalid response code (or any other error)
     catch (error) {
         tableContainer.innerHTML = `Sorry, there was a problem with the request: ${error.message}.`;
     }
-
 }
 
+// writes the degrees to the DOM as a table
+function buildTable(data) {
+    {
+        // clear out the table div in case table or error message are still there
+        tableContainer.innerHTML = "";
 
-// fetch degrees info from API when degrees button is clicked
-document.querySelector("#degreesbutton").addEventListener("click", getDegrees);
+        // create the table and add it to the DOM
+        let table = document.createElement("table");
 
-// clear degrees info when clear button is clicked
-document.querySelector("#clearbutton").addEventListener("click", () => {
-    tableContainer.innerHTML = "";
-})
+        // create the table header
+        table.innerHTML = "<thead><tr><th>School</th><th>Major</th><th>Type</th><th>Year</th></thead><tbody></tbody>"
+        tableContainer.appendChild(table);
+
+
+        // help from https://zetcode.com/javascript/jsonforeach/ and MDN docs with this loop
+        // loop through each degree in the data object (e.g. Boston University)
+        data.degrees.forEach(degree => {
+            // create a new row within the table body for the degree
+            let newRow = table.querySelector("tbody").insertRow();
+
+            // loop through each key-value pair in the degree object
+            Object.entries(degree).forEach(([key, value]) => {
+
+                // create a new table cell for the degree value (e.g. school, major, type, or year)
+                let newCell = newRow.insertCell();
+                newCell.innerHTML = value;
+            });
+        });
+    }
+}

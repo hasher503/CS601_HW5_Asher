@@ -47,6 +47,12 @@ button:hover {
     cursor: pointer;
 }
 
+/* remove shadow and cursor if button is disabled */
+button:disabled {
+    box-shadow: none;
+    cursor: auto;
+}
+
 /* centers the table on the page */
 table {
     margin: 3rem auto;
