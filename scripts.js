@@ -40,7 +40,7 @@ async function getDegrees() {
 
         // can also fetch from "./degrees.json" and it works, but wanted to try accessing through external host with netlify
         // (practicing my API working both with both local host and external host)
-        await fetch("https://jolly-dijkstra-66642f.netlify.app/degrees.json")
+        await fetch("https://cs601-degrees.netlify.app/degrees.json")
 
             // get data and check for response status
             .then(response => {
