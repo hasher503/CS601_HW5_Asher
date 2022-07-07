@@ -14,4 +14,4 @@ Hosted [on Netlify](https://cs601-degrees.netlify.app/)
 This mini-project fetches JSON data from the degrees.json file using a REST API (hosted on Netlify) and dynamically updates the DOM with a table containing information on degree attainment when the "Get Degrees" button is clicked. Likewise, the "Clear Degrees" button removes the table from the DOM.
 
 
-*Project inspiration &copy;2021 Boston University*
+*Project inspiration &copy;2021 Boston University. Copying any portion and submitting it as your own work is a violation of Boston University's Academic Conduct Code.*
