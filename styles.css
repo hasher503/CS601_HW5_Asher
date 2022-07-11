@@ -1,5 +1,5 @@
 /*
-Author: Hope Asher
+Author: Hope Neels
 CS601
 Assignment 5
 */
@@ -61,7 +61,8 @@ table {
     border-collapse: collapse;
 }
 
-th, td {
+th,
+td {
     padding: 1rem;
     border-bottom: 1px solid black;
 }
@@ -86,7 +87,9 @@ tr:hover {
 
 /* reduce padding so table fits on narrow screen */
 @media screen and (max-width: 500px) {
-    th, td {
+
+    th,
+    td {
         padding: 1rem .2rem;
 
     }
